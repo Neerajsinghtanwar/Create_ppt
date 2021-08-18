@@ -1,0 +1,2 @@
+python_pptx==0.6.19
+Wand==0.6.6

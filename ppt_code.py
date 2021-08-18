@@ -1,6 +1,6 @@
 from pptx import Presentation
 from wand.image import Image
-
+import os
 
 # image path
 img_path = "images/image1.jpg"
@@ -25,6 +25,10 @@ image2 = 'images/image2.jpg'
 image3 = 'images/image3.jpg'
 image4 = 'images/image4.jpg'
 image5 = 'images/image5.jpg'
+
+# create directory for composite images
+path = os.path.join("/home/neeraj/Desktop/Development/Python/Create_ppt/", "logo_images")
+os.mkdir(path)
 
 # set logo in image
 with Image(filename=image1) as main_img:
@@ -77,4 +81,4 @@ slide4.shapes.title.text = "This is a title."
 slide5.shapes.title.text = "This is a title."
 
 # saving file
-prs.save("my_ppt.pptx")
+prs.save("my_ppt.ppt")
