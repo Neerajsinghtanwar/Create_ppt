@@ -34,36 +34,36 @@ os.mkdir(path)
 with Image(filename=image1) as main_img:
     main_img.resize(1000, 800)
     with Image(filename=logo) as logo_img:
-        logo_img.resize(140, 70)
-        main_img.composite(logo_img, left=170, top=130)
+        logo_img.resize(330, 110)
+        main_img.composite(logo_img, left=15, top=35)
     main_img.save(filename="logo_images/logo_image1.jpg")
 
 with Image(filename=image2) as main_img:
     main_img.resize(1000, 800)
     with Image(filename=logo) as logo_img:
-        logo_img.resize(140, 70)
-        main_img.composite(logo_img, left=170, top=130)
+        logo_img.resize(330, 110)
+        main_img.composite(logo_img, left=15, top=35)
     main_img.save(filename="logo_images/logo_image2.jpg")
 
 with Image(filename=image3) as main_img:
     main_img.resize(1000, 800)
     with Image(filename=logo) as logo_img:
-        logo_img.resize(140, 70)
-        main_img.composite(logo_img, left=170, top=130)
+        logo_img.resize(330, 110)
+        main_img.composite(logo_img, left=15, top=35)
     main_img.save(filename="logo_images/logo_image3.jpg")
 
 with Image(filename=image4) as main_img:
     main_img.resize(1000, 800)
     with Image(filename=logo) as logo_img:
-        logo_img.resize(140, 70)
-        main_img.composite(logo_img, left=170, top=130)
+        logo_img.resize(330, 110)
+        main_img.composite(logo_img, left=15, top=35)
     main_img.save(filename="logo_images/logo_image4.jpg")
 
 with Image(filename=image5) as main_img:
     main_img.resize(1000, 800)
     with Image(filename=logo) as logo_img:
-        logo_img.resize(140, 70)
-        main_img.composite(logo_img, left=170, top=130)
+        logo_img.resize(330, 110)
+        main_img.composite(logo_img, left=15, top=35)
     main_img.save(filename="logo_images/logo_image5.jpg")
 
 # adding Images
