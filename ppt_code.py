@@ -71,4 +71,4 @@ for i in slides:
     p.font.size = Pt(30)
 
 # saving file
-prs.save("my_ppt.ppt")
+prs.save("my_pptx.ppt")
