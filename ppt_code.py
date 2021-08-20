@@ -3,9 +3,6 @@ from pptx.util import Cm, Inches, Pt
 from wand.image import Image
 import os
 
-# image path
-img_path = "images/image1.jpg"
-
 # create presentation
 prs = Presentation()
 
