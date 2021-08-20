@@ -13,11 +13,9 @@ prs = Presentation()
 sl = prs.slide_layouts[8]
 
 # adding slides
-slide1 = prs.slides.add_slide(sl)
-slide2 = prs.slides.add_slide(sl)
-slide3 = prs.slides.add_slide(sl)
-slide4 = prs.slides.add_slide(sl)
-slide5 = prs.slides.add_slide(sl)
+slides = {}
+for n in range(1,6):
+    slides["slide%s" %n] = prs.slides.add_slide(sl)
 
 # create directory for composite images
 try:
@@ -29,18 +27,15 @@ except FileExistsError:
 
 # image path
 logo = 'images/nike_black.png'
-image1 = 'images/image1.jpg'
-image2 = 'images/image2.jpg'
-image3 = 'images/image3.jpg'
-image4 = 'images/image4.jpg'
-image5 = 'images/image5.jpg'
+images = {}
+for m in range(1, 6):
+    images["image%s" % m] = 'images/image%s.jpg' % m
 
 # set logo in image
-images = [image1, image2, image3, image4, image5]
 x = 0
-for i in images:
+for i in images.values():
     x = x+1
-    print("set logo in Image%s is complete" % x)
+    print("set logo in Image%s" % x)
     with Image(filename=i) as img:
         img.resize(500, 400)
         with Image(filename=logo) as logo_img:
@@ -49,24 +44,17 @@ for i in images:
             loc = "logo_images/logo_image%s.jpg" % x
         img.save(filename=loc)
 
-# adding Images
-slides = [slide1, slide2, slide3, slide4, slide5]
+# adding image and title in slide
 x = 0
-for i in slides:
-    x = x + 1
-    title = i.shapes
-    top = Inches(1.5)
-    left = Inches(1.5)
-    title.add_picture("logo_images/logo_image%s.jpg" % x, left, top)
-
-# adding a title in slide
-for i in slides:
+for i in slides.values():
+    # adding image
+    x = x+1
+    i.shapes.add_picture("logo_images/logo_image%s.jpg" % x, Inches(1.5), Inches(1.5))
+    # adding title
     left = Inches(1.4)
     top = Inches(0.5)
     width = height = Inches(7)
-    txt = i.shapes.add_textbox(left, top, width, height)
-    tf = txt.text_frame
-    p = tf.add_paragraph()
+    p = i.shapes.add_textbox(left, top, width, height).text_frame.add_paragraph()
     p.text = "This ppt file is created by Python"
     p.font.size = Pt(30)
 
