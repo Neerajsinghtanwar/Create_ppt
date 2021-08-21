@@ -9,10 +9,10 @@ prs = Presentation()
 # choosing slide layout
 sl = prs.slide_layouts[8]
 
-# adding slides
+num_of_slides = 5
 slides = {}
-for n in range(1,6):
-    slides["slide%s" %n] = prs.slides.add_slide(sl)
+images = {}
+logo = 'images/nike_black.png'
 
 # create directory for composite images
 try:
@@ -22,16 +22,16 @@ try:
 except FileExistsError:
     print("File is already exists")
 
-# image path
-logo = 'images/nike_black.png'
-images = {}
-for m in range(1, 6):
-    images["image%s" % m] = 'images/image%s.jpg' % m
+for n in range(1,num_of_slides+1):
+    # create slides
+    slides["slide%s" %n] = prs.slides.add_slide(sl)
+    # create image path
+    images["image%s" % n] = 'images/image%s.jpg' % n
 
-# set logo in image
 x = 0
-for i in images.values():
+for i, j in zip(images.values(), slides.values()):
     x = x+1
+    # set logo in image
     print("set logo in Image%s" % x)
     with Image(filename=i) as img:
         img.resize(500, 400)
@@ -40,20 +40,15 @@ for i in images.values():
             img.composite(logo_img, left=5, top=5)
             loc = "logo_images/logo_image%s.jpg" % x
         img.save(filename=loc)
-
-# adding image and title in slide
-x = 0
-for i in slides.values():
-    # adding image
-    x = x+1
-    i.shapes.add_picture("logo_images/logo_image%s.jpg" % x, Inches(1.5), Inches(1.5))
-    # adding title
-    left = Inches(1.4)
-    top = Inches(0.5)
-    width = height = Inches(7)
-    p = i.shapes.add_textbox(left, top, width, height).text_frame.add_paragraph()
-    p.text = "This ppt file is created by Python"
-    p.font.size = Pt(30)
+        # adding image in slides
+        j.shapes.add_picture(loc, Inches(1.5), Inches(1.5))
+        # adding title in slides
+        left = Inches(1.4)
+        top = Inches(0.5)
+        width = height = Inches(7)
+        p = j.shapes.add_textbox(left, top, width, height).text_frame.add_paragraph()
+        p.text = "This ppt file is created by Python"
+        p.font.size = Pt(30)
 
 # saving file
 prs.save("my_ppt.pptx")
