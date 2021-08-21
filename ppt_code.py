@@ -16,7 +16,7 @@ for n in range(1,6):
 
 # create directory for composite images
 try:
-    path = os.path.join("/home/neeraj/Desktop/Development/Python/Create_ppt/", "logo_images")
+    path = os.path.join(os.getcwd(), "logo_images")
     os.mkdir(path)
 
 except FileExistsError:
